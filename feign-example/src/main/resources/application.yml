@@ -1,12 +1,11 @@
+server:
+  port: 8081
+
+
 spring:
   application:
-    name: elk-example
+    name: feign-example
 
-
-
-#logging:
-#  pattern:
-#    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
   zipkin:
@@ -26,8 +25,3 @@ management:
         http:
           server:
             request: true
-
-
-
-server:
-  port: 8080

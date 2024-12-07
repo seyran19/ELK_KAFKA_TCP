@@ -122,6 +122,19 @@ services:
       - kafka-1
       - kafka-2
       - kafka-3
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - ZIPKIN_HTTP_PORT=9411
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+
 volumes:
   elasticsearch_data_example:
     driver: local
