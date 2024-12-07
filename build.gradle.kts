@@ -37,8 +37,23 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.4.12")
 
     implementation("org.apache.kafka:kafka-clients:3.4.0")
-//    implementation("com.github.danielwegener:logback-kafka-appender:0.2.0")
-//    implementation("ch.qos.logback:logback-classic:1.4.11")
+//    implementation("org.springframework.cloud:spring-cloud-starter-zipkin:2.2.8.RELEASE")
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave
+    implementation("io.micrometer:micrometer-tracing-bridge-brave:1.4.0")
+//     https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-reporter-brave
+    implementation("io.zipkin.reporter2:zipkin-reporter-brave:3.4.2")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    implementation("org.springframework.boot:spring-boot-starter-actuator:3.4.0")
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave
+    implementation("io.micrometer:micrometer-tracing-bridge-brave:1.4.0")
+
+
+
+
+
+
+
+
 }
 
 tasks.withType<Test> {

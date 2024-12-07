@@ -1,24 +1,33 @@
 <configuration>
-<!--         Appender для отправки логов в Kafka-->
-            <appender name="kafka" class="com.example.elkexample.logger.KafkaAppender">
-                <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-                    <layout class="ch.qos.logback.classic.PatternLayout">
-                        <Pattern>
-                            {
-                            "timestamp_logger":"%date{dd MMM yyyy;HH:mm:ss.SSS}",
-                            "app": "example-app-kafka",
-                            "level":"%level",
-                            "message":"%msg",
-                            "thread": "%thread",
-                            "exception":"%ex{full}"
-                            }
-                        </Pattern>
-                    </layout>
-                </encoder>
-                <topic>logsLinux</topic>
-                <brokers>89.169.162.131:9092</brokers>
-            </appender>
 
+
+    <!--         Appender для отправки логов в Kafka-->
+<!--    <appender name="kafka" class="com.example.elkexample.logger.KafkaAppender">-->
+<!--        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">-->
+<!--            <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--                <Pattern>-->
+<!--                    {-->
+<!--                    "timestamp_logger":"%date{dd MMM yyyy;HH:mm:ss.SSS}",-->
+<!--                    "app": "elk-example",-->
+<!--                    "level":"%level",-->
+<!--                    "message":"%msg",-->
+<!--                    "thread": "%thread",-->
+<!--                    "exception":"%ex{full}",-->
+<!--                    "traceId": "%yellow(%X{traceId:-})",-->
+<!--                    "spanId": "%yellow(%X{spanId:-})"-->
+<!--                    }-->
+<!--                </Pattern>-->
+<!--            </layout>-->
+<!--        </encoder>-->
+<!--        <topic>logsLinux</topic>-->
+<!--        <brokers>51.250.106.73:9092</brokers>-->
+<!--    </appender>-->
+
+    <appender name="kafka" class="com.example.elkexample.logger.KafkaAppender">
+        <encoder class="ch.qos.logback.core.encoder.EchoEncoder" />
+        <topic>logsLinux</topic>
+        <brokers>51.250.106.73:9092</brokers>
+    </appender>
 
 
 
@@ -46,12 +55,15 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>
+                %(%d{ISO8601}) %highlight(%-5level) [%cyan(%t)] traceId: %yellow(%X{traceId:-}), spanId:
+                %yellow(%X{spanId:-}) %magenta(%C{}): %msg%n%throwable
+            </pattern>
         </encoder>
     </appender>
     <!-- Logger настройка -->
     <root level="INFO">
-        <appender-ref ref="kafka"/>
+                <appender-ref ref="kafka"/>
         <!--        <appender-ref ref="logstash"/>-->
         <appender-ref ref="STDOUT"/> <!-- new console appender reference -->
     </root>
