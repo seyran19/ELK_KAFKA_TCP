@@ -26,7 +26,7 @@
     <appender name="kafka" class="com.example.feignexample.logger.KafkaAppender">
         <encoder class="ch.qos.logback.core.encoder.EchoEncoder" />
         <topic>logsLinux</topic>
-        <brokers>158.160.75.7:9092</brokers>
+        <brokers>89.169.167.43:9092</brokers>
     </appender>
 
 
@@ -56,8 +56,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
-                %(%d{ISO8601}) %highlight(%-5level) [%cyan(%t)] traceId: %yellow(%X{traceId:-}), spanId:
-                %yellow(%X{spanId:-}) %magenta(%C{}): %msg%n%throwable
+                %(%d{ISO8601}) %highlight(%-5level) [%cyan(%t)] traceId: %yellow(%X{traceId:-}), spanId: %yellow(%X{spanId:-}) %magenta(%C{}): %msg%n%throwable
             </pattern>
         </encoder>
     </appender>

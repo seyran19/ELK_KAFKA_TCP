@@ -1,6 +1,7 @@
 package com.example.elkexample.controller;
 
 import com.example.elkexample.feign.FeignExampleRest;
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.observation.annotation.Observed;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class MainController {
 
     @GetMapping("/{name}")
     @Observed
+    @Timed("get hello with feign")
     public ResponseEntity<String> get(@PathVariable String name) {
         log.info("We are going to call feign-example-service");
         String hello = feignExampleRest.getHello(name);
@@ -37,6 +39,7 @@ public class MainController {
 
     @GetMapping("/second/{name}")
     @Observed()
+    @Timed("get hello without feign")
     public ResponseEntity<String> getHello(@PathVariable String name) {
         log.info("We are going to call feign-example-service second time");
 

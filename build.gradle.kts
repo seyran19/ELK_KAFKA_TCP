@@ -53,6 +53,8 @@ dependencies {
     implementation("io.zipkin.reporter2:zipkin-reporter-brave:3.4.2")
     implementation("com.github.loki4j:loki-logback-appender:1.5.1")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("io.micrometer:micrometer-registry-prometheus:1.14.1")
+
 
 
 

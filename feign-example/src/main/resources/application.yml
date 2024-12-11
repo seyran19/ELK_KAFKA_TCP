@@ -10,7 +10,7 @@ spring:
 management:
   zipkin:
     tracing:
-      endpoint: http://158.160.75.7:9411/api/v2/spans
+      endpoint: http://89.169.167.43:9411/api/v2/spans
   tracing:
     sampling:
       probability: 1.0
