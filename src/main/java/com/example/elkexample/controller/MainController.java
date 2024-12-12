@@ -30,7 +30,7 @@ public class MainController {
     @Observed
     @Timed("get hello with feign")
     public ResponseEntity<String> get(@PathVariable String name) {
-        log.info("We are going to call feign-example-service");
+        log.info("We are going to call feign-example-service second time");
         String hello = feignExampleRest.getHello(name);
         return ResponseEntity.ok(hello);
 
@@ -41,7 +41,7 @@ public class MainController {
     @Observed()
     @Timed("get hello without feign")
     public ResponseEntity<String> getHello(@PathVariable String name) {
-        log.info("We are going to call feign-example-service second time");
+        log.info("We are going to call feign-example-service");
 
         String url = String.format("http://localhost:8081/feign-example/hello/%s", name);
 

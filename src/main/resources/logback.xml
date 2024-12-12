@@ -26,7 +26,7 @@
     <appender name="kafka" class="com.example.elkexample.logger.KafkaAppender">
         <encoder class="ch.qos.logback.core.encoder.EchoEncoder" />
         <topic>logsLinux</topic>
-        <brokers>89.169.167.43:9092</brokers>
+        <brokers>158.160.65.127:9092</brokers>
     </appender>
 
 
